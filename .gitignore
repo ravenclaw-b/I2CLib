@@ -1,0 +1,54 @@
+# PlatformIO / build output
+.pio/
+.pioenvs/
+.piolibdeps/
+.pio/libdeps/
+.pio/build/
+.platformio/
+
+# Common build artifacts (binaries, maps, objects)
+*.elf
+*.bin
+*.hex
+*.map
+*.eep
+*.o
+*.a
+*.lib
+*.lst
+*.exe
+*.d
+
+# IDEs
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temporary / backup files
+*~
+*.swp
+*.swo
+*.bak
+
+# Test / coverage
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+
+# Environment / secrets
+.env
+.env.local
+secrets.*
+credentials.*
+
+# Misc
+build/
+tmp/
+temp/
+*.log
+
