@@ -53,3 +53,4 @@ temp/
 *.log
 
 .wakatime-project
+platformio.ini
