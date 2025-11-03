@@ -2,33 +2,13 @@
 
 #include <util/delay.h>
 
-// ---------- Constructors ----------
-// Preferred explicit constructor (PIN register provided)
+// Constructor implementation
 I2C::I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
          volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin)
     : SDA_PIN_REG(sda_pin_reg), SDA_DDR(sda_ddr), SDA_PORT(sda_port), SDA_PIN(sda_pin),
       SCL_PIN_REG(scl_pin_reg), SCL_DDR(scl_ddr), SCL_PORT(scl_port), SCL_PIN(scl_pin) 
 {
     // Ensure pins are released (inputs) and enable pull-ups
-    (*SDA_DDR) &= ~(1 << SDA_PIN); // input
-    (*SDA_PORT) |= (1 << SDA_PIN); // enable pull-up
-    (*SCL_DDR) &= ~(1 << SCL_PIN); // input
-    (*SCL_PORT) |= (1 << SCL_PIN); // enable pull-up
-}
-
-// Backwards-compatible constructor: derive PINx pointer from PORTx pointer
-I2C::I2C(volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
-         volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin)
-    : SDA_DDR(sda_ddr), SDA_PORT(sda_port), SDA_PIN(sda_pin),
-      SCL_DDR(scl_ddr), SCL_PORT(scl_port), SCL_PIN(scl_pin)
-{
-    // On classic AVRs the register layout is: PINx, DDRx, PORTx (ascending addresses).
-    // PORTx is typically PINx + 2. Derive PINx by subtracting 2 from the PORT pointer.
-    // This is a pragmatic fallback for existing call sites.
-    SDA_PIN_REG = SDA_PORT - 2;
-    SCL_PIN_REG = SCL_PORT - 2;
-
-    // Initialize pins: inputs with pull-ups enabled
     (*SDA_DDR) &= ~(1 << SDA_PIN); // input
     (*SDA_PORT) |= (1 << SDA_PIN); // enable pull-up
     (*SCL_DDR) &= ~(1 << SCL_PIN); // input

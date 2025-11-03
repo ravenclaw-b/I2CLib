@@ -116,19 +116,14 @@ if (i2c.readMessage(deviceAddr, data, sizeof(data))) {
 
 ## Pin Configuration
 
-The library supports two constructor variants:
+The constructor requires explicit register pointers for safe operation:
 
-1. **Preferred (Explicit PINx Register)**
 ```cpp
 I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
     volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
 ```
 
-2. **Backwards Compatible**
-```cpp
-I2C(volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
-    volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
-```
+This constructor requires you to specify all register pointers explicitly for maximum compatibility and safety across different AVR microcontrollers.
 
 ### Example Pin Configurations
 

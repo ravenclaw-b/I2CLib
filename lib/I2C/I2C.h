@@ -6,14 +6,9 @@
 
 class I2C {
 public:
-    // Preferred constructor: pass PINx, DDRx, PORTx pointers explicitly
+    // Constructor: requires explicit PINx, DDRx, PORTx pointers for safety
     I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
         volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
-
-    // Backwards-compatible constructor (what you originally used).
-    // This computes PINx from PORTx using the typical AVR layout (PORT = PIN + 2).
-    I2C(volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
-        volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
 
     // Delay config (microseconds)
     void setDelay(int microseconds);
