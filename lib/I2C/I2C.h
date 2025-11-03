@@ -6,7 +6,7 @@
 
 class I2C {
 public:
-    // Constructor: requires explicit PINx, DDRx, PORTx pointers for safety
+    // Preferred constructor: pass PINx, DDRx, PORTx pointers explicitly
     I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
         volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
 

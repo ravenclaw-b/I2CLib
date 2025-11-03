@@ -116,18 +116,14 @@ if (i2c.readMessage(deviceAddr, data, sizeof(data))) {
 
 ## Pin Configuration
 
-The constructor requires explicit register pointers for safe operation:
-
 ```cpp
 I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
     volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin);
 ```
 
-This constructor requires you to specify all register pointers explicitly for maximum compatibility and safety across different AVR microcontrollers.
-
 ### Example Pin Configurations
 
-#### Arduino Uno (ATmega328P)
+#### Arduino Nano (ATmega328P)
 ```cpp
 // Using Arduino pins A4 (SDA) and A5 (SCL)
 I2C i2c(&PINC, &DDRC, &PORTC, PC4,    // SDA on A4

@@ -2,7 +2,8 @@
 
 #include <util/delay.h>
 
-// Constructor implementation
+// ---------- Constructors ----------
+// Preferred explicit constructor (PIN register provided)
 I2C::I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint8_t *sda_port, uint8_t sda_pin,
          volatile uint8_t *scl_pin_reg, volatile uint8_t *scl_ddr, volatile uint8_t *scl_port, uint8_t scl_pin)
     : SDA_PIN_REG(sda_pin_reg), SDA_DDR(sda_ddr), SDA_PORT(sda_port), SDA_PIN(sda_pin),
@@ -14,6 +15,7 @@ I2C::I2C(volatile uint8_t *sda_pin_reg, volatile uint8_t *sda_ddr, volatile uint
     (*SCL_DDR) &= ~(1 << SCL_PIN); // input
     (*SCL_PORT) |= (1 << SCL_PIN); // enable pull-up
 }
+
 
 // ---------- Public API ----------
 void I2C::setDelay(int microseconds) {
