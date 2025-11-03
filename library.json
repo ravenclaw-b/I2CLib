@@ -1,0 +1,28 @@
+{
+    "name": "I2CLib",
+    "version": "1.0.0",
+    "description": "A flexible, pin-configurable I2C master library for AVR microcontrollers using software bit-banging",
+    "keywords": "i2c, twi, avr, bit-bang, software-i2c",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ravenclaw-b/I2CLib.git"
+    },
+    "authors": [
+        {
+            "name": "ravenclaw-b",
+            "url": "https://github.com/ravenclaw-b"
+        }
+    ],
+    "license": "MIT",
+    "frameworks": ["arduino"],
+    "platforms": ["atmelavr"],
+    "headers": ["I2C.h"],
+    "examples": [
+        {
+            "name": "Basic Usage",
+            "base": "examples/basic",
+            "files": ["basic.cpp"]
+        }
+    ],
+    "dependencies": {}
+}
